@@ -12,5 +12,8 @@ def conversion(request):
         numberinput=request.POST['numberinput']
         wordoutput=num2words(numberinput)
         obj=numModel.objects.create(inputnum=numberinput,outputword=wordoutput)
+        return render(request,"second.html",context={"result":wordoutput})
 
-    return HttpResponse('The word equivalent for {} is {}'.format(numberinput,wordoutput))
+def back(request):
+        if request.method=='GET':
+            return render(request,"index.html")
